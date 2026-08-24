@@ -1,0 +1,54 @@
+%!TEX program = xelatex
+\documentclass[12pt]{report}
+\usepackage{graphicx} % Required for ins[]erting images
+\usepackage{kotex}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{booktabs}
+\usepackage{arydshln}
+\usepackage[normalem]{ulem}
+\usepackage[T1]{fontenc} % 폰트 인코딩 설정 (이미 있다면 생략 가능)
+\usepackage{FiraMono}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\usepackage{amsmath} 
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad}
+\usepackage{ragged2e} % 양쪽 군등배분 
+\usepackage{setspace}
+\setstretch{1.5} % 행간 폭조정 
+\usepackage{adjustbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist{partopsep=0pt,parsep=3 mm,itemsep=0 mm,labelindent=0pt,leftmargin=0 mm}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % New columns size with centering 
+\usepackage[english]{babel}
+\usepackage{caption}
+    \captionsetup{skip=0pt,belowskip=0pt}
+    \captionsetup{width=18cm}
+    \captionsetup{font=normalsize}
+    \captionsetup{labelfont=bf}%textfont=bf}
+\usepackage{fontspec}
+	\setmainfont{Arial}
+	\setmainhangulfont{NanumGothic}
+\usepackage{xcolor}
+\newcommand{\tb}[1]{\textcolor{blue}{#1}}
+\title{Clinical Study Analysis Book}
+\author{Yong-Gyu. Son}
+\date{August 2026}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\chapter{Introduction}
+\input{Introduction.tex}
+
+\chapter{Sample Size}
+\input{Sample Size.tex}
+\input{Sample Size.tex}
+
+
+
+
+\end{document}

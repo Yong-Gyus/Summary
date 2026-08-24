@@ -1,0 +1,49 @@
+\section{Comparison of Two Treatment Group with Continuous Endpoints}
+
+
+
+\subsection{Hypothesis and Critical Value}
+귀무가설과 대립가설은 다음과 같다. 
+    \begin{align*}
+        H_0 : \mu_1-\mu_0 = 0, \qquad\qquad  H_1 : \mu_1-\mu_0 = \delta, \quad \delta \neq 0
+    \end{align*}
+    \noindent
+등분산을 만족할 때, 기각치는 (단측 검정으로 가정한다): 
+    \begin{equation*}
+        0 + z_{1-\alpha}\cdot\sigma\cdot\sqrt{\frac{2}{n}} = \delta-z_{1-\beta}\cdot\sigma\sqrt{\frac{2}{n}}
+    \end{equation*}
+    \noindent
+이분산일때, 기각치는 (단측 검정으로 가정한다): 
+    \begin{equation*}
+        0 + z_{1-\alpha}\cdot\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}} 
+        = \delta-z_{1-\beta}\cdot\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}
+    \end{equation*}
+
+
+
+
+\subsection{Basic Formular for Sample Size Calculation}
+등분산 가정을 만족하고 양측 검정을 한다면, 상기 등분산 조건 수식에서 샘플 사이즈를 계산할 수 있다. 최소 샘플 사이즈는 다음과 같다 (여기서 샘플 사이즈는 각 그룹당 배정되는 샘플 사이즈를 의미한다).  
+    \begin{equation*}
+        n = \frac{2\sigma^2}{\delta^2}(z_{1-\alpha/2} + z_{1-\beta})^2
+    \end{equation*}
+이분산 조건으로 각 $\sigma^2_1, \sigma^2_2$로 되어있고 양측 검정을 한다면, 한 가지 조건이 필요하다. 두 그룹을 구성하는 비율을 먼저 계산하면 다음과 같은 관계식이 도출된다. 
+    \begin{align*}
+        k = \frac{n_1}{n_2} \longleftrightarrow n_1 = k\cdot n_2
+    \end{align*}
+이를 가지고 한 그룹의 샘플 사이즈를 계산하면 다음과 같다. 
+    \begin{align*}
+        n_1 = \Big(\frac{z_{1-\alpha/2} + z_{1-\beta)}}{\delta}\Big)^2\cdot(\sigma^2_1 + k\cdot\sigma^2_2)
+    \end{align*}
+이 논리로 보면 \uline{\tb{상수 $k$에 대한 사전 정의가 필요}}하다는 문제가 있다. 상수 $k$가 정의되어 있어야 $n_2$ 샘플 사이즈를 계산할 수 있다. 상수 $k$를 정의하는 논리를 검토해 보자
+    \begin{tcolorbox}[arc=4 mm, colback=yellow!5, colframe=black, boxrule=0.2 mm]
+        \begin{itemize}[leftmargin=1.5em]
+            \item \uline{\textbf{균등 할당 논리 (Equal Allocation)}}: $k = 1$로 설정하는 방법, 두 집단의 분산이 비슷할 때 통계적 검정력을 극대화 하는 방법이다. 실무적으로 이상적으로 접근하는 방식이라 가치가 떨어진다. 
+            
+            \item \uline{\textbf{네이만 최적 할당 논리 (Neyman Allocation)}}: $k=\sigma_1/\sigma_2$로 설정한다. 두 집단의 분산이 다를때, 전체 표본수를 최소화하기 위한 최적화 논리다. 통계적 오차를 최소화하기 위해서 분산이 더 큰 그룹에 샘플을 많이 할당한다. 
+
+            \item \uline{\textbf{비용 최적화 할당 논리 (Cost-Optimal Allocation)}}: $k = \sigma_1\sqrt{c_1}/\sigma_2\sqrt{c_2}$로 설정한다. 여기서 $c_1, c_2$는 각 그룹당 피험자의 시험 비용이다. 분산이 크고 비용이 적은 쪽에 많은 샘플이 할당된다.  
+            
+            \item \uline{\textbf{현실적 / 임상적 제약 논리 (Practical Constraints)}}: $k$을 임의적으로 정하는 방식이다. 실험적 환경의 한계나 목적에 따라 고정된 값 $(k=0.5, k=0.25)$의 형태로 정의하는 방식이다. 예를 들어 희귀질환 환자군의 수가 극히 적다면 대조군의 집단을 2 - 4배 더 많이 모집해서 부족한 검정력을 보충하는 방식이다. 
+        \end{itemize}
+    \end{tcolorbox}

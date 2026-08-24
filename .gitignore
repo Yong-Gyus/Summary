@@ -1,0 +1,16 @@
+# LaTeX 컴파일 생성 파일 제외
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.out
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+*.pdf

@@ -1,0 +1,60 @@
+\section{Reproducibility of Trials}
+단일시험을 한다고 가정하자. 표본의 크기가 충분히 커서 t-statistics가 z-statistics로 수렴하는 상태이다. 유의수준 $\alpha=0.05$ (양측검정)을 한다. 유의수준에 대응되는 임계값은 1.96이 된다. 재현성을 다음 누적확률분포 수리 방정식\ref{eq:reproduciblity}으로 계산할 수 있다. 여기서 $t_{obs}$는 관측된 t-statistics이다. 이를 개별 statistics로 부터 계산되는 재현 확률은 다음 표\ref{tab:reproducibility}로 정리할 수 있다.
+\begin{equation}
+\label{eq:reproduciblity}
+    \text{Reproduciblity} =\Phi(t_{obs} - 1.96)
+\end{equation}
+
+\begin{table}[h]
+    \centering
+    \caption{Estimated Reproducibility Probability Based on Results from a Single Trial}
+    \label{tab:reproducibility}
+    \setlength{\tabcolsep}{28pt}
+    \begin{tabular}{ccccc}
+    \toprule
+    \textbf{t-statistics} & \textbf{} & \textbf{p-value} & \textbf{} & \textbf{Reproducibility (\%)} \\ \midrule
+    1.96                  &           & 0.050            &           & 50.0                    \\
+    2.05                  &           & 0.400            &           & 53.6                    \\
+    2.17                  &           & 0.300            &           & 58.3                    \\
+    2.33                  &           & 0.200            &           & 64.4                    \\
+    2.58                  &           & 0.100            &           & 73.2                    \\ \hdashline
+    2.81                  &           & 0.005            &           & 80.2                    \\
+    3.30                  &           & 0.001            &           & 90.1                    \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\noindent
+이 논점은 시사하는 바가 크다. p-value가 0.05로 나왔다고 해도 재현확률은 50\% 수준에 불과하다. 실험의 재현성이 80\% 수준까지 도달할려면 최소 p-value가 0.005이하 (reproducibility=80.2\% 이상)는 되어야 한다. 
+
+
+\section{Precision Analysis}
+Maximum Error를 $E$로 정의하자. $E$는 신뢰폭의 절반에 해당하는 값 중에 최댓값이다. 
+\begin{equation}
+    E = |\bar{y} - \mu| = z_{\alpha/2}\dfrac{\sigma}{\sqrt{n}}
+\end{equation}
+만약 $E$가 정의되었다면, 샘플사이즈를 구할 수 있다. 이 방식은 실험자가 선택적으로 구간의 폭을 선정한다면 $\sigma$에 따른 샘플사이즈를 얻을 수 있다. 
+\begin{equation}
+    n = \dfrac{z_{\alpha/2}^2\cdot \sigma^2}{E^2}
+\end{equation}
+약점으로 이 방식으로는 1종 오류만 반영되어 있다. 즉 2종 오류인 위양성 여부에 대한 샘플사이즈가 반영되어 있지 않다는 점이다. Precision analysis 예를 한번 보자 
+\begin{tcolorbox}[arc=4mm, boxrule=0.1mm]
+    [예제] 실험자가 95\%신뢰 하에서 평균의 추정 오차가 전체 편차의 10\%이하 였으면 한다. 이를 만족하는 샘플사이즈는 얼마인가? 
+    \begin{equation*}
+        n = \dfrac{1.96^2\cdot \sigma^2}{(0.1\sigma)^2} = 384.2 \approx 385
+    \end{equation*}
+\end{tcolorbox}
+\section{Power Analysis}
+1종 오류만 반영하는 Precision Analysis의 단점을 보완한 방식이다. 이 방식은 귀무가설을 일정 신뢰수준과 검정력을 가진 조건하에서 검정하는 방식이다. 일반적으로 검정력은 80\%와 90\%를 많이 사용한다. 다음 예제를 보자
+\begin{tcolorbox}[arc=4mm, boxrule=0.1mm, breakable]
+    [예제] 처리그룹 $(x_i, i =1, 2, \cdots, n_1)$과 대조그룹 $(y_i, i =1, 2, \cdots, n_2)$이 있다. 처리그룹과 대조그룹의 분산은 각 $\sigma_1^2$와 $\sigma^2_2$이다. 두 그룹 모두 정규분포를 따른다. 두 그룹간 샘플수는 동일하다고 가정하자 $(n = n_1 = n_2)$. 확인하고 싶은 귀무가설은 다음과 같다. 
+    \begin{align*}
+        H_0 : \mu_1 = \mu_2, \qquad H_1 : \mu_1 \neq \mu_2
+    \end{align*}
+    정규분포를 따르므로 $Z$ 통계량은 다음과 같다. 
+    \begin{align}
+    \label{eq:power analysis}
+        Z = \dfrac{\bar{x} - \bar{y}}{\sqrt{\dfrac{\sigma_1^2}{n_1}+\dfrac{\sigma_2^2}{n_2}}} 
+          =\dfrac{\bar{x} - \bar{y}}{\sqrt{\dfrac{\sigma_1^2+\sigma_2^2}{n}}}  
+    \end{align}
+    식\ref{eq:power analysis}에 따르면, (1) \textbf{통계량 $Z$가 정의}되고 (2) \textbf{두 그룹간 차이에 대한 사전 정보}가 있다면 필요한 샘플사이즈를 계산할 수 있다. 
+\end{tcolorbox}
