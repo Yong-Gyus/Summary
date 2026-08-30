@@ -1,0 +1,54 @@
+% !TEX program = xelatex
+\documentclass[12pt, aspectratio=1610]{beamer}
+\usepackage{kotex}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bookmark}
+\usepackage{graphicx}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{setspace}
+\setstretch{1.2} % 행간 폭조정 
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage[math-style=upright]{unicode-math}
+\usepackage{tcolorbox}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\usepackage[font=scriptsize,labelsep=period, labelfont=bf]{caption}
+\setbeamertemplate{caption}[numbered]
+\captionsetup{width=\linewidth}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\abovecaptionskip}{2pt}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\setsansfont{Calibri} % 영문 기본 폰트
+
+\newcommand{\tb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tv}[1]{\textcolor{violet}{#1}}
+\newcommand{\fst}[1]{\vskip-0.4cm\hspace{-0.65cm}\tv{\footnotesize{#1}}\\[-0.5cm]\noindent\hspace*{-0.65cm}\tv{\rule{12cm}{0.1pt}}\vskip -0.1cm}
+\newcommand{\setlefti}[1]{\setlength{\leftmargini}{#1}}
+\newcommand{\setleftii}[1]{\setlength{\leftmarginii}{#1}}
+
+\renewcommand{\arraystretch}{1.2}
+
+
+\setbeamertemplate{itemize items}[ball]
+\mode<presentation>
+{
+  \usetheme{boxes}       
+  \usefonttheme{structurebold}
+  \setbeamercolor{frametitle}{fg=violet}
+  \setbeamercolor{item}{fg=violet} 
+  \setbeamercolor{subitem}{fg=violet} 
+} 
+\title{\tv{Gauge RR}}
+\author{Yong-Gyu. SON}
+\begin{document}
+  \maketitle
+
+\section{Basic Concept}
+    \include{S1_Basic}
+\end{document}
